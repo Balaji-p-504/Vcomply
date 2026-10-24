@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-/**
- * Animated counter hook — smoothly counts from 0 to the target value
- */
+// smooth counter hook
 export function useAnimatedCounter(target: number, duration = 1200): number {
   const [count, setCount] = useState(0);
   const prevTarget = useRef(target);
@@ -22,7 +20,7 @@ export function useAnimatedCounter(target: number, duration = 1200): number {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
-      // Ease-out cubic for smooth deceleration
+      // ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       const currentValue = Math.round(start + (target - start) * eased);
 
@@ -40,9 +38,7 @@ export function useAnimatedCounter(target: number, duration = 1200): number {
   return count;
 }
 
-/**
- * Intersection Observer hook — triggers animation when element scrolls into view
- */
+// triggers when element scrolls into view
 export function useInView(threshold = 0.1): [React.RefObject<HTMLDivElement | null>, boolean] {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isInView, setIsInView] = useState(false);
@@ -68,9 +64,7 @@ export function useInView(threshold = 0.1): [React.RefObject<HTMLDivElement | nu
   return [ref, isInView];
 }
 
-/**
- * Staggered animation delay calculator for lists
- */
+// staggered delay for lists
 export function getStaggerDelay(index: number, baseDelay = 60, maxDelay = 600): string {
   return `${Math.min(index * baseDelay, maxDelay)}ms`;
 }

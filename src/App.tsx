@@ -335,12 +335,12 @@ export const App: React.FC = () => {
       >
         <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
           <div>
-            <strong>VendorPulse</strong> — Built for VComply Campus Recruitment Build &amp; Deploy Assignment
+            <strong>VendorPulse</strong> — Third-Party Risk &amp; Compliance Platform
           </div>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <span>Framework: React 19 + TypeScript + Vite</span>
+            <span>React + TypeScript</span>
             <span>•</span>
-            <span>Standard: SOC 2 Type II CC9.2</span>
+            <span>SOC 2 CC9.2</span>
           </div>
         </div>
       </footer>

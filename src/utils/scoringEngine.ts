@@ -8,10 +8,7 @@ import type {
   VendorControls,
 } from '../types/vendor';
 
-/**
- * Calculates the Inherent Risk Score (10 - 100) based on data sensitivity,
- * integration level, business criticality, and AI privacy factors.
- */
+// calculate inherent risk (10 - 100) based on data, integration, and criticality
 export function calculateInherentRisk(params: {
   businessCriticality: BusinessCriticality;
   dataClassification: DataClassification;
@@ -22,7 +19,7 @@ export function calculateInherentRisk(params: {
 }): number {
   let score = 0;
 
-  // 1. Data Classification Weight (up to 35 pts)
+  // data classification weight
   switch (params.dataClassification) {
     case 'CUSTOMER_PII':
       score += 35;
@@ -41,7 +38,7 @@ export function calculateInherentRisk(params: {
       break;
   }
 
-  // 2. Integration Level Weight (up to 30 pts)
+  // integration depth
   switch (params.integrationLevel) {
     case 'DATABASE_DIRECT':
       score += 30;
@@ -57,7 +54,7 @@ export function calculateInherentRisk(params: {
       break;
   }
 
-  // 3. Business Criticality Weight (up to 25 pts)
+  // business criticality
   switch (params.businessCriticality) {
     case 'MISSION_CRITICAL':
       score += 25;
@@ -73,24 +70,21 @@ export function calculateInherentRisk(params: {
       break;
   }
 
-  // 4. Modifiers
+  // extra modifiers
   if (params.processesCustomerData) {
     score += 5;
   }
 
-  // AI Vendor with training data retention represents a severe IP/PII exposure risk
+  // penalty if vendor retains prompt/data for training
   if (params.isAIVendor && params.aiTrainingDataRetention) {
     score += 10;
   }
 
-  // Clamp inherent risk between 10 and 100
+  // clamp between 10 and 100
   return Math.min(100, Math.max(10, score));
 }
 
-/**
- * Calculates the Mitigating Controls / Security Maturity Score (0 - 100)
- * based on certifications, encryption, identity protection, and operational hygiene.
- */
+// mitigating controls score (0 - 100)
 export function calculateMitigatingScore(params: {
   certifications: VendorCertifications;
   controls: VendorControls;
@@ -99,29 +93,28 @@ export function calculateMitigatingScore(params: {
 }): number {
   let score = 0;
 
-  // Certifications (up to 45 pts)
+  // certs (up to 45)
   if (params.certifications.soc2Type2) score += 20;
   if (params.certifications.iso27001) score += 15;
   if (params.certifications.gdprDpaSigned) score += 12;
   if (params.certifications.hipaa) score += 5;
   if (params.certifications.fedramp) score += 6;
 
-  // Security & Identity Controls (up to 40 pts)
+  // security and identity (up to 40)
   if (params.controls.encryptionAtRest) score += 8;
   if (params.controls.encryptionInTransit) score += 7;
   if (params.controls.ssoMfaEnforced) score += 12;
   if (params.controls.annualPenTest) score += 8;
 
-  // Operational Hygiene (up to 15 pts)
+  // operational hygiene (up to 15)
   if (params.controls.slaUptimePercentage >= 99.9) score += 4;
   if (params.controls.incidentResponseWindowHours <= 48) score += 4;
   if (params.controls.disasterRecoveryTested) score += 4;
   if (params.controls.subprocessorsDocumented) score += 4;
 
-  // AI Safety bonus / penalty
+  // ai data policy adjustment
   if (params.isAIVendor) {
     if (!params.aiTrainingDataRetention) {
-      // Verified zero data retention guarantee
       score += 5;
     } else {
       score -= 10;
@@ -131,12 +124,9 @@ export function calculateMitigatingScore(params: {
   return Math.min(100, Math.max(0, score));
 }
 
-/**
- * Computes Residual Risk Score (10 - 100) and maps to appropriate Risk Tier.
- * Residual Risk = Inherent Risk * (1 - (Mitigating Score / 100) * 0.72)
- */
+// residual risk calculation
 export function calculateResidualRisk(inherent: number, mitigating: number): number {
-  const reductionFactor = (mitigating / 100) * 0.72; // Maximum 72% risk reduction via controls
+  const reductionFactor = (mitigating / 100) * 0.72; // max 72% reduction from controls
   const residual = Math.round(inherent * (1 - reductionFactor));
   return Math.min(100, Math.max(10, residual));
 }
