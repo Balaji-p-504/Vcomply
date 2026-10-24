@@ -18,10 +18,11 @@ Today, companies track this in chaotic, stale Google Sheets where SOC 2 renewals
 
 ## 🚀 Live Demo & Local Quickstart
 
-- **Live URL:** Deployed to Vercel / Netlify (accessible publicly)
+- **Live Application URL:** **[https://balaji-p-504.github.io/Vcomply/](https://balaji-p-504.github.io/Vcomply/)**
+- **GitHub Repository:** **[https://github.com/Balaji-p-504/Vcomply](https://github.com/Balaji-p-504/Vcomply)**
 - **Local Dev Server:**
   ```bash
-  git clone <repo-url>
+  git clone https://github.com/Balaji-p-504/Vcomply.git
   cd Vcomply
   npm install
   npm run dev

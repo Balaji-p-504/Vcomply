@@ -7,11 +7,11 @@
 
 | Requirement | Value / Link | Notes |
 |---|---|---|
-| **Candidate Name** | Candidate | Campus Recruitment Round |
+| **Candidate Name** | Balaji P | Campus Recruitment Round |
 | **Project Name** | **VendorPulse** | B2B Third-Party Vendor Risk & SOC 2 CC9.2 Audit Readiness Platform |
 | **Primary Domain** | Governance, Risk, and Compliance (GRC) & Developer Security | Directly aligned with VComply's core product ecosystem |
-| **Deployed Application URL** | *[Insert Deployed Live URL here - e.g. Vercel, Netlify, or GitHub Pages]* | Fully functional, zero-setup required, tested end-to-end |
-| **GitHub Repository URL** | *[Insert Your Public GitHub Repo URL here]* | Clean 7-commit history, zero secrets, comprehensive README |
+| **Deployed Application URL** | **https://balaji-p-504.github.io/Vcomply/** | Fully functional, zero-setup required, tested end-to-end |
+| **GitHub Repository URL** | **https://github.com/Balaji-p-504/Vcomply** | Clean commit history, zero secrets, comprehensive README |
 | **Tech Stack** | React 19, TypeScript 5.8, Vite, Vanilla CSS Design System, Vitest | Zero heavy UI frameworks; custom dark-mode glassmorphism tokens |
 | **Automated Tests** | 10 Passing Unit Tests (`npm test`) | Covers Inherent Risk, Controls Score, Residual Risk, Expiry Calculation |
 
