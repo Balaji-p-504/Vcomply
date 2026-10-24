@@ -41,25 +41,23 @@ TypeScript's strict `verbatimModuleSyntax` and `noUnusedLocals` in Vite initiall
 
 Follow this 5-step script when recording your 2–3 minute Loom or screen recording:
 
-1. **Introduction (0:00 – 0:30):**
+1. **Introduction & Animated Dashboard (0:00 – 0:30):**
    - Introduce **VendorPulse**: B2B SaaS & AI vendor risk management tool built for SOC 2 CC9.2 compliance.
-   - Point out the **Executive Dashboard Metrics**: 8 total vendors, SOC 2 CC9.2 Readiness percentage, and the red **Urgent Compliance Attention Required** banner flagging vendors with expired reports or missing DPAs.
-2. **2D Risk Matrix Heatmap (0:30 – 1:00):**
-   - Click the **Risk Matrix Heatmap** tab.
-   - Show how vendors are placed into a 3x4 grid mapping **Inherent Impact** against **Control Maturity**.
-   - Explain how a high inherent risk vendor (like AWS) is safely controlled, while legacy vendors with weak controls land in high-risk zones.
-3. **Deep-Dive Audit Inspection & Dynamic Scoring (1:00 – 1:40):**
-   - Click on **Amazon Web Services (AWS)** or **PulseTrack Metrics** to open the inspection modal.
-   - Show the 5-domain controls checklist (SOC 2, ISO 27001, DPA, SAML SSO, AES-256).
-   - **Toggle a control checkbox live:** Show how the Inherent Risk, Controls Score, and Residual Risk update dynamically in real time.
-   - Click **Approve Vendor** and demonstrate how the audit trail log records the timestamp and action.
-4. **Vendor Onboarding & Search/Filters (1:40 – 2:15):**
+   - Point out the **Executive Dashboard**: Animated SVG Donut Ring Charts for SOC 2 Readiness and Residual Risk, smooth count-up KPI metrics, risk exposure distribution bar, and the red **Urgent Compliance Attention Required** banner.
+2. **SOC 2 CC9.2 Readiness Checklist & 2D Matrix (0:30 – 1:00):**
+   - Click the **SOC 2 Readiness** tab to show the 8 automated pre-flight audit validation criteria with real-time pass/fail progress bar.
+   - Switch to the **Risk Matrix Heatmap** tab: show how vendors are placed into a 3x4 grid mapping **Inherent Impact** against **Control Maturity**.
+3. **Deep-Dive Audit Inspection & Side-by-Side Comparison (1:00 – 1:45):**
+   - Click on **Amazon Web Services (AWS)** or **PulseTrack Metrics** to open the inspection workspace.
+   - **Toggle a control checkbox live:** Show how the Inherent Risk, Controls Score, and Residual Risk update dynamically in real time, and show the audit log trail.
+   - Click **Compare** in the navbar to open the **Side-by-Side Vendor Comparison Modal**: highlight the color-coded score advantages and controls comparison.
+4. **Vendor Onboarding & Search/Filters (1:45 – 2:20):**
    - Click **New Vendor** in the top bar.
    - Click the **+ Cloudflare** or **+ Anthropic** quick pre-fill button to show the live risk score estimator in action.
    - Click **Complete Intake & Onboard** to add the vendor.
    - Test the search bar (type "OpenAI") and toggle the quick filters (**Expiring Soon**, **AI Services**, **Missing DPA**).
    - Switch between **Card Grid** and **Compact Table View**.
-5. **Auditor Dossier & Conclusion (2:15 – 2:45):**
+5. **Auditor Dossier & Conclusion (2:20 – 2:45):**
    - Click **Audit Dossier** in the header.
    - Show the formal AICPA-formatted SOC 2 CC9.2 evidence dossier with executive summary, exception tracking, vendor risk register, and management sign-off signature blocks.
    - Mention the 10 passing Vitest unit tests (`npm test`) and wrap up.

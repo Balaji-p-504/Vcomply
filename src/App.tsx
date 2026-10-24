@@ -14,6 +14,8 @@ import { RiskMatrix } from './components/RiskMatrix';
 import { VendorDetailModal } from './components/VendorDetailModal';
 import { VendorFormModal } from './components/VendorFormModal';
 import { AuditReportModal } from './components/AuditReportModal';
+import { VendorCompareModal } from './components/VendorCompareModal';
+import { ComplianceChecklist } from './components/ComplianceChecklist';
 import { getExpiryStatus } from './utils/scoringEngine';
 import {
   Shield,
@@ -21,6 +23,7 @@ import {
   Clock,
   Sparkles,
   FileText,
+  ShieldCheck,
 } from 'lucide-react';
 
 export const App: React.FC = () => {
@@ -28,7 +31,8 @@ export const App: React.FC = () => {
   const [selectedVendor, setSelectedVendor] = useState<Vendor | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isAuditReportOpen, setIsAuditReportOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'inventory' | 'matrix' | 'expiring' | 'ai'>('inventory');
+  const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'inventory' | 'matrix' | 'checklist' | 'expiring' | 'ai'>('inventory');
   const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
 
   const [filters, setFilters] = useState<FilterState>({
@@ -168,6 +172,7 @@ export const App: React.FC = () => {
         onAddVendorClick={() => setIsAddModalOpen(true)}
         onOpenAuditReport={() => setIsAuditReportOpen(true)}
         onResetData={handleResetData}
+        onOpenCompare={() => setIsCompareModalOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -204,6 +209,15 @@ export const App: React.FC = () => {
 
           <button
             type="button"
+            className={`nav-tab-btn ${activeTab === 'checklist' ? 'active' : ''}`}
+            onClick={() => setActiveTab('checklist')}
+          >
+            <ShieldCheck size={16} />
+            <span>SOC 2 Readiness</span>
+          </button>
+
+          <button
+            type="button"
             className={`nav-tab-btn ${activeTab === 'expiring' ? 'active' : ''}`}
             onClick={() => setActiveTab('expiring')}
           >
@@ -234,12 +248,14 @@ export const App: React.FC = () => {
           </button>
         </div>
 
-        {/* Tab 1: Matrix View */}
+        {/* Tab View Selection */}
         {activeTab === 'matrix' ? (
           <RiskMatrix
             vendors={vendors}
             onSelectVendor={(v) => setSelectedVendor(v)}
           />
+        ) : activeTab === 'checklist' ? (
+          <ComplianceChecklist vendors={vendors} />
         ) : (
           /* Tabs: Inventory, Expiring, AI */
           <>
@@ -285,6 +301,17 @@ export const App: React.FC = () => {
         <VendorFormModal
           onClose={() => setIsAddModalOpen(false)}
           onSaveVendor={handleAddVendor}
+        />
+      )}
+
+      {isCompareModalOpen && (
+        <VendorCompareModal
+          vendors={vendors}
+          onClose={() => setIsCompareModalOpen(false)}
+          onSelectVendor={(v) => {
+            setSelectedVendor(v);
+            setIsCompareModalOpen(false);
+          }}
         />
       )}
 

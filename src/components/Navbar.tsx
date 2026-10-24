@@ -6,6 +6,7 @@ import {
   Download,
   RotateCcw,
   FileSpreadsheet,
+  ArrowLeftRight,
 } from 'lucide-react';
 import { exportVendorsAsCSV, exportVendorsAsJSON } from '../utils/exportUtils';
 import type { Vendor } from '../types/vendor';
@@ -15,6 +16,7 @@ interface NavbarProps {
   onAddVendorClick: () => void;
   onOpenAuditReport: () => void;
   onResetData: () => void;
+  onOpenCompare: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -22,6 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onAddVendorClick,
   onOpenAuditReport,
   onResetData,
+  onOpenCompare,
 }) => {
   return (
     <header className="header-nav">
@@ -70,6 +73,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Download size={14} />
             <span>JSON</span>
+          </button>
+
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={onOpenCompare}
+            title="Side-by-side vendor comparison"
+          >
+            <ArrowLeftRight size={16} />
+            <span>Compare</span>
           </button>
 
           <button

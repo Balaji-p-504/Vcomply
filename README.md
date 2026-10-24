@@ -73,12 +73,15 @@ $$\text{Residual Risk} = \text{Inherent Risk} \times \left(1 - \frac{\text{Mitig
 
 ## ⚡ Key Features
 
-1. **Executive GRC Dashboard:** Real-time KPI stat cards for SOC 2 CC9.2 Readiness %, High/Critical Risk Exposure count, Expiring/Expired Certifications alert banner, and Average Residual Risk index.
-2. **2D Risk Matrix Heatmap:** Interactive heat map plotting Inherent Business Impact against Control Maturity with direct drill-down into vendor files.
-3. **Interactive 5-Domain Control Checklist:** Toggle SOC 2, ISO 27001, DPA, SAML SSO/MFA, AES-256 encryption, and pen-tests inside any vendor profile with **real-time recalculation of risk scores**.
-4. **Certification Expiration Tracking:** Automatically flags certificates expired or expiring within 60 days.
-5. **SOC 2 CC9.2 Auditor Dossier:** Formatted AICPA-standard printable report (`window.print()`) featuring executive sign-off lines, vendor inventory register, and exception remediation tracking.
-6. **Data Portability:** Instant 1-click CSV and JSON export, plus single-click benchmark demo data reset.
+1. **Executive GRC Dashboard with Animated SVG Ring Charts:** Real-time KPI stat cards with smooth count-up animations, animated SVG donut ring charts for SOC 2 Readiness & Average Residual Risk, high/critical risk exposure distribution bars, and urgent compliance alert banners.
+2. **SOC 2 CC9.2 Audit Readiness Checklist:** Dedicated tab with 8 automated pre-flight audit verification gates (centralized inventory, risk scoring completeness, SOC 2 coverage on high-risk vendors, customer data DPA compliance, encryption standards, identity MFA enforcement, certification expiration checks, and remediation resolutions) with real-time pass/fail progress bar.
+3. **Side-by-Side Vendor Comparison Modal:** Compare any two vendors head-to-head across all security controls, risk scores, data classifications, SLAs, and certification timelines with color-coded score advantages.
+4. **2D Risk Matrix Heatmap:** Interactive heat map plotting Inherent Business Impact against Control Maturity with direct drill-down into vendor inspection files.
+5. **Interactive 5-Domain Control Checklist:** Toggle SOC 2, ISO 27001, DPA, SAML SSO/MFA, AES-256 encryption, and annual pen-tests inside any vendor profile with **instant live recalculation of risk scores**.
+6. **AI & LLM Governance:** Specialized vetting for generative AI vendors, flagging model training on customer data vs. zero-retention guarantees with risk weighting adjustments.
+7. **Certification Expiration Tracking:** Automatically monitors certificate validity and flags expired reports or certificates expiring within 60 days.
+8. **SOC 2 CC9.2 Auditor Dossier:** Formatted AICPA-standard printable report (`window.print()`) featuring executive sign-off lines, vendor inventory register, and exception remediation tracking.
+9. **Data Portability & Benchmark Seeding:** Instant 1-click CSV and JSON exports, persistent browser LocalStorage, and a single-click reset to benchmark enterprise dataset.
 
 ---
 

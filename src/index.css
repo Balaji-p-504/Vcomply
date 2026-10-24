@@ -1053,6 +1053,156 @@ body {
   }
 }
 
+@keyframes cardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.35); }
+  50% { box-shadow: 0 0 0 6px rgba(99, 102, 241, 0); }
+}
+
+/* Staggered Card Entry */
+.vendor-card,
+.metric-card {
+  animation: cardSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.metric-card:nth-child(1) { animation-delay: 0ms; }
+.metric-card:nth-child(2) { animation-delay: 60ms; }
+.metric-card:nth-child(3) { animation-delay: 120ms; }
+.metric-card:nth-child(4) { animation-delay: 180ms; }
+.metric-card:nth-child(5) { animation-delay: 240ms; }
+
+/* Ring Chart */
+.ring-chart-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-chart-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-chart-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.ring-chart-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.2rem;
+}
+
+.ring-chart-sublabel {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+}
+
+/* Compliance Checklist */
+.compliance-checklist-container {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.checklist-item {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+  animation: cardSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.checklist-item:hover {
+  border-color: var(--border-bright);
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.checklist-status-indicator {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.checklist-icon-wrap {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Enhanced Hover Micro-interactions */
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: scale(0.97) translateY(0);
+}
+
+.vendor-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.04) 0%,
+    transparent 50%,
+    rgba(168, 85, 247, 0.04) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.vendor-card:hover::before {
+  opacity: 1;
+}
+
+/* Active Tab Pulse */
+.nav-tab-btn.active {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
 /* Print Styles for Auditor Dossier */
 @media print {
   body {
@@ -1095,4 +1245,17 @@ body {
   .risk-matrix-grid {
     grid-template-columns: 1fr;
   }
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
+
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-content {
+    padding: 1rem 0.75rem 3rem;
+  }
+}
+
